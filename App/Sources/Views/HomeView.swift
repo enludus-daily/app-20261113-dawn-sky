@@ -139,7 +139,8 @@ struct WindowSection: View {
     @Environment(AppModel.self) private var model
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1)) { context in
+        // 窓が開いている間と直前だけ毎秒、ほかは 30 秒ごとに描き直す（撮影・デモでは止める）
+        TimelineView(.periodic(from: .now, by: tickInterval)) { context in
             let date = model.frozen ? model.now : context.date
             let phase = model.phase(at: date)
             let target = model.schedule.target(on: date, calendar: model.calendar)
@@ -170,6 +171,14 @@ struct WindowSection: View {
                     SunButton()
                 }
             }
+        }
+    }
+
+    private var tickInterval: TimeInterval {
+        if model.frozen { return 3600 }
+        switch model.phase {
+        case .open, .before: return 1
+        default: return 30
         }
     }
 

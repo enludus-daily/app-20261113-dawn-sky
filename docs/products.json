@@ -4,14 +4,22 @@
     {
       "type": "NON_CONSUMABLE",
       "productId": "com.enludus.daily.008.pro",
-      "referenceName": "Pro",
+      "referenceName": "Dawn Atlas Pro",
       "price": 480,
       "familySharable": true,
-      "reviewNote": "Pro を買うと、すべての〇〇と詳しい振り返りが使えます。課金の画面は設定 > Pro から開けます。",
+      "reviewNote": "Pro を買うと、めずらしい空 18 ページ（図鑑）・1 年の輪と朝の帯のポスターの書き出し・くわしい振り返り・休む日が使えます。課金の画面は 設定 > あさやけ図鑑 Pro、または図鑑の鍵のあるページから開けます。 / Pro unlocks 18 rare atlas pages, year-ring and strip poster export, insights and rest days. Open it from Settings > Dawn Atlas Pro or any locked atlas page.",
       "reviewScreenshot": "docs/iap/paywall.png",
       "localizations": [
-        {"locale": "ja", "name": "Pro", "description": "すべての〇〇と詳しい振り返り"},
-        {"locale": "en-US", "name": "Pro", "description": "All 〇〇 and detailed reviews"}
+        {
+          "locale": "ja",
+          "name": "あさやけ図鑑 Pro",
+          "description": "めずらしい空18ページ・1年のポスター・振り返り・休む日"
+        },
+        {
+          "locale": "en-US",
+          "name": "Dawn Atlas Pro",
+          "description": "18 rare skies, year poster, insights, rest days"
+        }
       ]
     }
   ]

@@ -8,7 +8,7 @@ import XCTest
 /// その日のアプリの主な流れ。
 enum MainFlow {
     /// 起動引数（見本のデータで開くなど。保存されたデータを壊さないもの）
-    static let launchArguments: [String] = []
+    static let launchArguments: [String] = ["-uiTestFresh"]
 
     /// 1 操作ずつ。各操作のあとに撮る。
     /// 最初の起動：3 ページの案内 → 起きる時刻を決める → 空を撮る（CI はカメラがないので見本の空）→ 発表 → パレットに置く → 図鑑

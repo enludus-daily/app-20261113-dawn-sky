@@ -1,21 +1,21 @@
 {
   "_doc": "App Store Connect に API で入れる情報（.github/workflows/asc.yml の metadata が読む）。文字数：name・subtitle 30、keywords 100（カンマ区切り）、promotionalText 170、description 4000。カテゴリの ID は EDUCATION・PRODUCTIVITY・UTILITIES・LIFESTYLE・HEALTH_AND_FITNESS など。審査への提出と App プライバシーの申告は本人が行う。",
   "locale": "ja",
-  "name": "",
-  "subtitle": "",
-  "primaryCategory": "",
-  "secondaryCategory": "",
+  "name": "あさやけ図鑑：起きたら空を集める",
+  "subtitle": "起きて15分の空が、色の図鑑になる",
+  "primaryCategory": "LIFESTYLE",
+  "secondaryCategory": "HEALTH_AND_FITNESS",
   "supportUrl": "https://github.com/enludus-daily/app-20261113-dawn-sky/issues",
   "privacyPolicyUrl": "https://github.com/enludus-daily/app-20261113-dawn-sky/blob/main/PRIVACY.md",
-  "keywords": "",
-  "promotionalText": "",
-  "description": "",
-  "whatToTest": "",
+  "keywords": "早起き,朝活,起床,朝焼け,空,写真,色,パレット,図鑑,習慣,寝坊,目覚め,朝,コレクション",
+  "promotionalText": "起きると決めた時刻から15分以内に空を撮ると、その朝の空の色が1マスになって図鑑とパレットに入ります。寝坊した朝はマスが欠けるだけ。めずらしい空は、早起きした朝にしか出会えません。",
+  "description": "あさやけ図鑑は、朝起きるのが苦手な人のための「空のコレクション」です。\n\n起きると決めた時刻から15分の「窓」の中で空を撮ると、写真から空の色を2〜3色取り出し、その朝のマスとして今月のパレットに置きます。空の色・季節・起きた時刻で、図鑑のページ（空36ページ・朝のできごと12ページ）が埋まっていきます。\n\n■ できること\n・起きる時刻を曜日ごとに決める（お知らせは端末の中だけ・オプトイン）\n・窓の中で空を撮る → 色がパレットのマスに\n・寝坊した朝はマスが欠けて残る（罰はなし）\n・続けた朝・いちばん長く続いた朝\n・1年の輪：1日1本のくさびで、1年の朝の色が輪になる\n・今月の空のパレットを画像にして共有\n・撮ったあとに「空のメモ」（空と朝の光の話を40本）\n\n■ あさやけ図鑑 Pro（買い切り・サブスクではありません）\n・めずらしい空・まぼろしの空 18ページ（燃える空・星の残る空・地平の光・夏至や冬至の朝・三十日目の朝 など）\n・1年の輪と、最近30朝の帯のポスターを書き出す\n・この30日の平均の起きた時刻・曜日ごとの強さ\n・休む日（体調の悪い日や旅行の日に、続けた朝を途切れさせない）\n\n■ プライバシー\n写真は色を読むためだけに使い、この iPhone の外に送りません。写真を残さない設定もあります。ログイン・広告・解析はありません。\n\niPhone Duo の内側の大きな画面では、左に今月のパレット、右に図鑑を並べて表示します。",
+  "whatToTest": "1) 起きる時刻を今から数分後にして、その時刻から15分以内に「空を撮る」で空（窓の外）を撮ってください。マスが埋まり、図鑑のページが出ます。2) 窓を過ぎてから撮ると、マスが欠けて残ります（2回目以降の記録）。3) 3回目の朝を置いた直後に Pro の画面が1回だけ出ます。サンドボックスで購入と「購入を復元」を確かめてください。4) 設定 > 写真を残さない、お知らせのオン・オフ。",
   "en-US": {
-    "name": "",
-    "subtitle": "",
-    "keywords": "",
-    "promotionalText": "",
-    "description": ""
+    "name": "Dawn Atlas: Catch the Sky",
+    "subtitle": "Wake up, catch the sky",
+    "keywords": "wake up,early riser,morning,sunrise,sky,color,palette,habit,alarm,routine,collection,photo,dawn",
+    "promotionalText": "Shoot the sky within 15 minutes of waking and that morning's color joins your palette and atlas. Sleep in and the square just chips. Rare skies only come early.",
+    "description": "Dawn Atlas turns getting up into a collection of skies.\n\nSet your wake time. In the 15-minute window that follows, shoot the sky: the app reads two or three colors from your photo and places that morning's square in this month's palette. The colors, the season and the time you got up fill the pages of your atlas — 36 skies and 12 morning moments.\n\nFEATURES\n- Wake time per weekday, with optional on-device reminders\n- Catch the sky inside your window and it becomes a square of color\n- Sleep in and the square stays chipped — no penalties\n- Streak and best streak\n- Year ring: one thin wedge per day, a whole year of morning colors\n- Share this month's sky palette as an image\n- A short \"sky note\" after every shot (40 notes on light and mornings)\n\nDAWN ATLAS PRO (one-time purchase, not a subscription)\n- 18 rare and mythic pages: Burning Sky, Lingering Stars, Horizon Glow, solstice mornings, your thirtieth morning and more\n- Export your year ring or your last 30 mornings as a poster\n- Insights: 30-day average wake time and your strongest weekdays\n- Rest days that keep your streak alive on sick days and trips\n\nPRIVACY\nPhotos are only used to read colors and never leave your iPhone. You can choose not to keep photos at all. No login, no ads, no analytics.\n\nOn iPhone Duo's large inner display, your monthly palette and your atlas sit side by side."
   }
 }

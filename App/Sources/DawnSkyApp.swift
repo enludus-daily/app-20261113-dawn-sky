@@ -58,7 +58,7 @@ struct RootView: View {
         .task {
             // 窓の残り時間を進める（撮影・デモでは止める）
             while !Task.isCancelled {
-                try? await Task.sleep(for: .seconds(15))
+                try? await Task.sleep(for: .seconds(60))
                 if !model.frozen { model.now = Date() }
             }
         }
@@ -116,8 +116,17 @@ enum Launch {
         return cal.date(bySettingHour: hour, minute: minute, second: 0, of: Date()) ?? Date()
     }
 
+    /// UI テスト：毎回、最初の起動の状態から始める（保存した記録と設定を消す）
+    static var isFreshUITest: Bool { ProcessInfo.processInfo.arguments.contains("-uiTestFresh") }
+
     static func makeModel() -> AppModel {
         Lang.forcedJapanese = forcesJapanese
+        if isFreshUITest {
+            for key in ["onboarded", "schedule", "keepPhotos", "haptics", "reminder", "lastPaywallDay"] {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+            try? FileManager.default.removeItem(at: AppModel.journalURL)
+        }
         guard isDemo || scene != nil else { return AppModel() }
         let night = scene == "night"
         let late = scene == "late"
