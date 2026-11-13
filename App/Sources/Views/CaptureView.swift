@@ -286,14 +286,6 @@ struct RevealView: View {
                 RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
                     .fill(skyGradient(colors: page.colors))
                     .frame(width: 66, height: 88)
-                    .overlay {
-                        if !model.isUnlocked(page) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.ground.opacity(0.5))
-                                Image(systemName: "lock").font(.system(size: 13)).foregroundStyle(Tone.dawnDeep)
-                            }
-                        }
-                    }
                 VStack(alignment: .leading, spacing: 5) {
                     HStack(spacing: 8) {
                         RarityDots(level: page.rarity)

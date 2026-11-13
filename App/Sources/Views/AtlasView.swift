@@ -9,7 +9,17 @@ struct AtlasView: View {
     @State private var paywall = false
 
     private var found: [String: String] { model.showsSample ? model.paletteJournal.found : model.journal.found }
-    private var pages: [SkyPage] { kind == .sky ? SkyCatalog.skies : SkyCatalog.moments }
+    /// 見つけたページを先に、あとはふつう → まぼろしの順（最初に開いたとき、鍵と「？」だけにならないように）
+    private var pages: [SkyPage] {
+        let list = kind == .sky ? SkyCatalog.skies : SkyCatalog.moments
+        let order = Dictionary(uniqueKeysWithValues: list.enumerated().map { ($1.id, $0) })
+        return list.sorted { a, b in
+            let fa = found[a.id] != nil, fb = found[b.id] != nil
+            if fa != fb { return fa }
+            if a.rarity != b.rarity { return a.rarity < b.rarity }
+            return (order[a.id] ?? 0) < (order[b.id] ?? 0)
+        }
+    }
 
     var body: some View {
         ZStack {

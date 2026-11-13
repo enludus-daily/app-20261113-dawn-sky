@@ -213,6 +213,7 @@ struct WindowSection: View {
                     .font(Typo.body)
                     .foregroundStyle(Tone.mute)
             case .open(_, let left):
+                Eyebrow("窓の残り", color: Tone.glowDeep)
                 Text(verbatim: String(format: "%d:%02d", left / 60, left % 60))
                     .font(Typo.serif(48, .light))
                     .kerning(-2)

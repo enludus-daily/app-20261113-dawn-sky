@@ -1320,6 +1320,16 @@
           }
         }
       }
+    },
+    "窓の残り": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WINDOW LEFT"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

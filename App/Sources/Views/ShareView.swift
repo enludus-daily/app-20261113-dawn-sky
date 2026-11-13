@@ -10,7 +10,7 @@ enum ShareStyle: String, CaseIterable, Identifiable {
 struct ShareView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
-    @State private var style: ShareStyle = .month
+    @State private var style: ShareStyle = Launch.scene == "year" ? .ring : .month
     @State private var rendered: UIImage?
 
     var body: some View {
@@ -154,6 +154,21 @@ struct ShareCard: View {
                         .kerning(-0.5)
                         .foregroundStyle(Tone.ink)
                     PaletteGrid(cells: cells, spacing: 5)
+                    let records: [DayRecord] = cells.compactMap { (cell: MonthCell) -> DayRecord? in if case .record(let r) = cell.state { return r } else { return nil } }
+                    if !records.isEmpty {
+                        HStack(spacing: 0) {
+                            ForEach(records) { r in
+                                Rectangle().fill(skyGradient(r.swatches)).opacity(r.result == .late ? 0.4 : 1)
+                            }
+                        }
+                        .frame(height: 26)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        if let top = Self.mostFrequent(records) {
+                            Text(verbatim: tr("今月いちばん多かった空：\(top)", "Most frequent sky: \(top)"))
+                                .font(Typo.serif(12))
+                                .foregroundStyle(Tone.mute)
+                        }
+                    }
                 case .ring:
                     Text(verbatim: tr("1 年の朝の輪", "A year of mornings"))
                         .font(Typo.serif(22))
@@ -185,6 +200,13 @@ struct ShareCard: View {
             }
             .padding(22)
         }
+    }
+
+    static func mostFrequent(_ records: [DayRecord]) -> String? {
+        var counts: [String: Int] = [:]
+        for r in records { counts[r.skyID, default: 0] += 1 }
+        guard let best = counts.max(by: { $0.value != $1.value ? $0.value < $1.value : $0.key > $1.key }) else { return nil }
+        return SkyCatalog.page(best.key)?.name
     }
 
     private func figure(_ value: String, _ label: String) -> some View {
