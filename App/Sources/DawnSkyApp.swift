@@ -20,6 +20,8 @@ struct RootView: View {
         ZStack {
             if model.onboarded {
                 HomeView()
+                    // 全画面の場面やシートを出している間は、下のホームを読み上げ・UI テストの対象から外す
+                    .accessibilityHidden(model.cover != nil || model.activeSheet != nil)
                     .transition(.opacity)
             } else {
                 OnboardingView()
