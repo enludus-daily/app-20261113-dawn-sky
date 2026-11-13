@@ -1,6 +1,576 @@
 {
   "sourceLanguage": "ja",
   "strings": {
+    "空の図鑑": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sky Atlas"
+          }
+        }
+      }
+    },
+    "空の色と、起きた朝のできごとで、ページが埋まっていきます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pages fill in with the colors of the sky and the mornings you get up."
+          }
+        }
+      }
+    },
+    "いまは見本の図鑑です。最初の空を撮ると、あなたの図鑑になります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a sample atlas. Take your first sky to make it yours."
+          }
+        }
+      }
+    },
+    "めずらしい空・まぼろしの空 18 ページは Pro の図鑑": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "18 rare and mythic pages are in the Pro atlas"
+          }
+        }
+      }
+    },
+    "閉じる": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skies"
+          }
+        }
+      }
+    },
+    "朝のできごと": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mornings"
+          }
+        }
+      }
+    },
+    "見つけ方": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How to find it"
+          }
+        }
+      }
+    },
+    "最初に見つけた朝": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First found"
+          }
+        }
+      }
+    },
+    "この空の朝": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mornings with this sky"
+          }
+        }
+      }
+    },
+    "Pro の図鑑をひらく": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the Pro atlas"
+          }
+        }
+      }
+    },
+    "カメラの許可がありません": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NO CAMERA ACCESS"
+          }
+        }
+      }
+    },
+    "空を撮るには、カメラをオンに": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on the camera to catch the sky"
+          }
+        }
+      }
+    },
+    "設定 › あさやけ図鑑 › カメラ をオンにしてください。写真は色を読むためだけに使い、この iPhone の外には送りません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to Settings › Dawn Atlas › Camera and switch it on. Photos are only used to read colors and never leave this iPhone."
+          }
+        }
+      }
+    },
+    "設定を開く": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        }
+      }
+    },
+    "この端末ではカメラが使えません": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NO CAMERA ON THIS DEVICE"
+          }
+        }
+      }
+    },
+    "見本の空で試す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try a sample sky"
+          }
+        }
+      }
+    },
+    "空の色が図鑑に入るまでを、見本の写真で試せます。見本は記録には入りません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See how a sky becomes an atlas page using a sample photo. Samples are not saved."
+          }
+        }
+      }
+    },
+    "見本の空なので、記録には入りません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This was a sample sky, so it isn’t saved."
+          }
+        }
+      }
+    },
+    "パレットに置く": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to palette"
+          }
+        }
+      }
+    },
+    "新しいページ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NEW PAGE"
+          }
+        }
+      }
+    },
+    "めずらしい空は Pro の図鑑に残せます": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep rare skies in the Pro atlas"
+          }
+        }
+      }
+    },
+    "新しい": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NEW"
+          }
+        }
+      }
+    },
+    "続けた朝": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Streak"
+          }
+        }
+      }
+    },
+    "最初の 1 枚は試しです。明日の朝、起きて 15 分以内に撮ると、続けた朝が始まります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your first shot is a trial. Tomorrow, shoot within 15 minutes of waking to start your streak."
+          }
+        }
+      }
+    },
+    "空のメモ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SKY NOTE"
+          }
+        }
+      }
+    },
+    "あさやけ図鑑": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dawn Atlas"
+          }
+        }
+      }
+    },
+    "図鑑": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atlas"
+          }
+        }
+      }
+    },
+    "設定": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "今日の空は、もう図鑑に入っています": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today’s sky is already in your atlas"
+          }
+        }
+      }
+    },
+    "まだ夜です": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It’s still night"
+          }
+        }
+      }
+    },
+    "今日の朝は過ぎました": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This morning has passed"
+          }
+        }
+      }
+    },
+    "色が読めませんでした": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t read the colors"
+          }
+        }
+      }
+    },
+    "最初の 1 枚は、今すぐ試し撮りできます": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can take a trial shot right now"
+          }
+        }
+      }
+    },
+    "窓が開いています。カーテンを開けて、空を": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your window is open. Open the curtains and look up"
+          }
+        }
+      }
+    },
+    "寝坊の朝": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A late morning"
+          }
+        }
+      }
+    },
+    "空を撮る": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catch the sky"
+          }
+        }
+      }
+    },
+    "今朝の空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "THIS MORNING"
+          }
+        }
+      }
+    },
+    "いちばん長く": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best"
+          }
+        }
+      }
+    },
+    "見本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SAMPLE"
+          }
+        }
+      }
+    },
+    "前の月": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous month"
+          }
+        }
+      }
+    },
+    "次の月": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next month"
+          }
+        }
+      }
+    },
+    "これは見本です。明日の朝、起きて 15 分以内に空を撮ると、ここに今朝の色が入ります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a sample. Tomorrow, shoot the sky within 15 minutes of waking and your morning’s color lands here."
+          }
+        }
+      }
+    },
+    "今月の空のパレットを共有": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share this month’s palette"
+          }
+        }
+      }
+    },
+    "窓の中": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In window"
+          }
+        }
+      }
+    },
+    "早起き": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Early"
+          }
+        }
+      }
+    },
+    "寝坊": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Late"
+          }
+        }
+      }
+    },
+    "撮らなかった": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missed"
+          }
+        }
+      }
+    },
+    "1 年の輪": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YEAR RING"
+          }
+        }
+      }
+    },
+    "くわしい振り返りと、1 年のポスター": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deeper insights and a year poster"
+          }
+        }
+      }
+    },
+    "平均の起きた時刻・曜日ごとの強さ・季節の色（Pro）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average wake time, best weekdays, seasonal colors (Pro)"
+          }
+        }
+      }
+    },
+    "この 30 日の平均": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last 30 days, on average"
+          }
+        }
+      }
+    },
+    "曜日ごとの、窓の中で起きた割合": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How often you hit the window, by weekday"
+          }
+        }
+      }
+    },
+    "1 年のポスターを書き出す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export a year poster"
+          }
+        }
+      }
+    },
+    "すべて見る": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See all"
+          }
+        }
+      }
+    },
+    "写真と記録は、この iPhone の中だけに保存されます。送信しません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos and records stay on this iPhone. Nothing is sent."
+          }
+        }
+      }
+    },
+    "次へ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
+        }
+      }
+    },
     "はじめる": {
       "localizations": {
         "en": {
@@ -11,32 +581,742 @@
         }
       }
     },
-    "リセット": {
+    "起きてからの 15 分が、空の図鑑になる": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reset"
+            "value": "Your first 15 minutes awake become a sky atlas"
           }
         }
       }
     },
-    "1 たす": {
+    "起きると決めた時刻から 15 分以内に空を撮ると、その朝の空の色が 1 マスになって、今月のパレットと図鑑に入ります。": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Add 1"
+            "value": "Shoot the sky within 15 minutes of your wake time, and that morning’s color becomes a square in this month’s palette and a page in your atlas."
           }
         }
       }
     },
-    "回数 %lld": {
+    "寝坊した朝は、マスが欠ける": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Count %lld"
+            "value": "Sleep in, and the square chips"
+          }
+        }
+      }
+    },
+    "罰はありません。欠けたマスが見えるだけ。めずらしい空は、早起きした朝にしか出会えません。図鑑は 48 ページ。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No penalties — you just see a chipped square. Rare skies only show up on mornings you’re up early. 48 pages to collect."
+          }
+        }
+      }
+    },
+    "起きる時刻を決める": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set your wake time"
+          }
+        }
+      }
+    },
+    "曜日ごとの時刻は、あとで設定から変えられます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can set different times per weekday later in Settings."
+          }
+        }
+      }
+    },
+    "写真は色を読むためだけに使い、この iPhone の外には送りません。ログインも広告もありません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos are only used to read colors and never leave this iPhone. No login, no ads."
+          }
+        }
+      }
+    },
+    "朝を、1 年ぶんの絵に": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn a year of mornings into art"
+          }
+        }
+      }
+    },
+    "あさやけ図鑑 Pro は 1 回だけの買い切りです。サブスクではありません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dawn Atlas Pro is a one-time purchase. Not a subscription."
+          }
+        }
+      }
+    },
+    "めずらしい空 18 ページ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "18 rare sky pages"
+          }
+        }
+      }
+    },
+    "燃える空・星の残る空・地平の光・夏至や冬至の朝・三十日目の朝など。見つけた空を図鑑に残せます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Burning Sky, Lingering Stars, Horizon Glow, solstice mornings, your thirtieth morning and more — kept in your atlas."
+          }
+        }
+      }
+    },
+    "1 年のポスター": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Year poster"
+          }
+        }
+      }
+    },
+    "1 年の輪と、最近 30 朝の帯を、きれいな 1 枚に書き出せます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export your year ring or your last 30 mornings as a clean, shareable image."
+          }
+        }
+      }
+    },
+    "くわしい振り返り": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deeper insights"
+          }
+        }
+      }
+    },
+    "この 30 日の平均の起きた時刻、曜日ごとの強さ。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average wake time over 30 days and your strongest weekdays."
+          }
+        }
+      }
+    },
+    "休む日": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rest days"
+          }
+        }
+      }
+    },
+    "体調の悪い日や旅行の日に。続けた朝を途切れさせません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For sick days and trips. Your streak stays intact."
+          }
+        }
+      }
+    },
+    "空を撮る・今月のパレット・1 年の輪・図鑑の 30 ページ・今月のパレットの共有は、ずっと無料です。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catching the sky, the monthly palette, the year ring, 30 atlas pages and sharing your monthly palette are free forever."
+          }
+        }
+      }
+    },
+    "購入を復元": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Purchases"
+          }
+        }
+      }
+    },
+    "Pro を復元しました": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro restored"
+          }
+        }
+      }
+    },
+    "復元できる購入が見つかりませんでした": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No purchases to restore"
+          }
+        }
+      }
+    },
+    "プライバシーポリシー": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy Policy"
+          }
+        }
+      }
+    },
+    "3 つの朝が、パレットに入りました": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "THREE MORNINGS IN YOUR PALETTE"
+          }
+        }
+      }
+    },
+    "めずらしい空を、図鑑に残す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KEEP YOUR RARE SKIES"
+          }
+        }
+      }
+    },
+    "1 年の輪を、ポスターに": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YOUR YEAR AS A POSTER"
+          }
+        }
+      }
+    },
+    "休む日をつくる": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TAKE A REST DAY"
+          }
+        }
+      }
+    },
+    "朝のくせを、振り返る": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LEARN YOUR MORNING PATTERNS"
+          }
+        }
+      }
+    },
+    "あさやけ図鑑 Pro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dawn Atlas Pro"
+          }
+        }
+      }
+    },
+    "Pro をお使いいただいています": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You’re on Pro"
+          }
+        }
+      }
+    },
+    "ありがとうございます。Pro がひらきました": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thank you! Pro is unlocked"
+          }
+        }
+      }
+    },
+    "承認を待っています": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for approval"
+          }
+        }
+      }
+    },
+    "購入できませんでした。時間をおいて、もう一度お試しください": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Purchase failed. Please try again later"
+          }
+        }
+      }
+    },
+    "ファミリー共有に対応しています": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Works with Family Sharing"
+          }
+        }
+      }
+    },
+    "いまは購入できません": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Purchases unavailable right now"
+          }
+        }
+      }
+    },
+    "通信のよい場所で、この画面を開き直してください。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reopen this screen where you have a good connection."
+          }
+        }
+      }
+    },
+    "もう一度読み込む": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "起きる時刻": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WAKE TIME"
+          }
+        }
+      }
+    },
+    "曜日ごとに変える": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Different time per weekday"
+          }
+        }
+      }
+    },
+    "毎日": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every day"
+          }
+        }
+      }
+    },
+    "起きる時刻から 15 分が「窓」です。窓の中で空を撮ると、マスが埋まります。2 時間前から撮れば早起きの印がつきます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your “window” is the 15 minutes after your wake time. Shoot inside it to fill the square. Shoot up to 2 hours early for an early-bird mark."
+          }
+        }
+      }
+    },
+    "お知らせ": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOTIFICATIONS"
+          }
+        }
+      }
+    },
+    "起きる時刻にお知らせする": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify me at wake time"
+          }
+        }
+      }
+    },
+    "端末の中だけで予約するお知らせです。目覚ましの代わりではありません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scheduled on this device only. Not a replacement for an alarm."
+          }
+        }
+      }
+    },
+    "写真": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PHOTOS"
+          }
+        }
+      }
+    },
+    "撮った写真を小さく残す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep small copies of photos"
+          }
+        }
+      }
+    },
+    "オフにすると、写真は色を読んだらすぐに捨て、色だけを残します。写真も色も、この iPhone の外には送りません。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When off, photos are discarded right after the colors are read; only the colors are kept. Nothing ever leaves this iPhone."
+          }
+        }
+      }
+    },
+    "残した写真をすべて消す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all saved photos"
+          }
+        }
+      }
+    },
+    "休む日（Pro）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "REST DAYS (PRO)"
+          }
+        }
+      }
+    },
+    "今日を休む日にする": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make today a rest day"
+          }
+        }
+      }
+    },
+    "休むのをやめる": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo rest"
+          }
+        }
+      }
+    },
+    "休む": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rest"
+          }
+        }
+      }
+    },
+    "体調の悪い日や旅行の日。続けた朝を途切れさせず、マスには月のしるしが入ります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For sick days or travel. Your streak won’t break, and the square gets a moon mark."
+          }
+        }
+      }
+    },
+    "手ざわり": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FEEL"
+          }
+        }
+      }
+    },
+    "振動": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haptics"
+          }
+        }
+      }
+    },
+    "音は鳴らしません。朝は家族が寝ていることが多いためです。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No sounds — others are often still asleep in the morning."
+          }
+        }
+      }
+    },
+    "そのほか": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTHER"
+          }
+        }
+      }
+    },
+    "使い方をもう一度見る": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show the intro again"
+          }
+        }
+      }
+    },
+    "写真と記録は、この iPhone の中（アプリの中）だけに保存されます。サーバー・ログイン・広告・解析はありません。アプリを消すと、記録も消えます。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos and records are stored only inside this app on this iPhone. No servers, login, ads or analytics. Deleting the app deletes your records."
+          }
+        }
+      }
+    },
+    "完了": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "残した写真をすべて消しますか？": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all saved photos?"
+          }
+        }
+      }
+    },
+    "消す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "空の色とマスは残ります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your sky colors and squares will stay."
+          }
+        }
+      }
+    },
+    "今月のパレット": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This month"
+          }
+        }
+      }
+    },
+    "朝の帯": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Strip"
+          }
+        }
+      }
+    },
+    "見本のパレットです。空を撮ると、あなたの色になります。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a sample palette. Catch the sky to make it yours."
+          }
+        }
+      }
+    },
+    "Pro で書き出す": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export with Pro"
+          }
+        }
+      }
+    },
+    "共有する": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        }
+      }
+    },
+    "共有カード": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Card"
+          }
+        }
+      }
+    },
+    "ATLAS OF MORNINGS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ATLAS OF MORNINGS"
+          }
+        }
+      }
+    },
+    "1 / 3": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 / 3"
+          }
+        }
+      }
+    },
+    "2 / 3": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 / 3"
+          }
+        }
+      }
+    },
+    "3 / 3": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 / 3"
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Pro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PRO"
           }
         }
       }

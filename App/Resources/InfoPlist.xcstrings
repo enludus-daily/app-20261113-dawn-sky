@@ -7,13 +7,30 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "__APP_NAME__"
+            "value": "あさやけ図鑑"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "__APP_NAME__"
+            "value": "Dawn Atlas"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "その朝の空の色を読んで、図鑑とパレットに入れるために使います。写真はこの iPhone の外に送りません。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used to read the colors of this morning’s sky for your atlas and palette. Photos never leave this iPhone."
           }
         }
       }

@@ -11,10 +11,18 @@ enum MainFlow {
     static let launchArguments: [String] = []
 
     /// 1 操作ずつ。各操作のあとに撮る。
+    /// 最初の起動：3 ページの案内 → 起きる時刻を決める → 空を撮る（CI はカメラがないので見本の空）→ 発表 → パレットに置く → 図鑑
     static let steps: [Step] = [
-        .tap("main.increment"),
-        .tap("main.increment"),
-        .tap("main.reset"),
+        .tap("main.next"),
+        .tap("main.next"),
+        .tap("main.start"),
+        .tap("main.capture"),
+        .tap("main.sample"),
+        .wait(3.5),
+        .tap("main.place"),
+        .tap("main.atlas"),
+        .swipeUp,
+        .tap("main.closeAtlas"),
     ]
 }
 
