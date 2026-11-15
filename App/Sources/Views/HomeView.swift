@@ -251,7 +251,7 @@ struct SunButton: View {
         } label: {
             VStack(spacing: 8) {
                 ZStack {
-                    Circle().fill(Tone.glow.opacity(0.45)).frame(width: 110, height: 110).blur(radius: 22)
+                    Circle().fill(RadialGradient(colors: [Tone.glow.opacity(0.5), .clear], center: .center, startRadius: 30, endRadius: 56)).frame(width: 112, height: 112)
                     Circle().fill(Tone.glowSoft).frame(width: 86, height: 86)
                     Circle().fill(LinearGradient(colors: [Color(hex: 0xFFE2B8), Tone.glow], startPoint: .top, endPoint: .bottom)).frame(width: 68, height: 68)
                     Circle().stroke(Color.white.opacity(0.9), lineWidth: 1.5).frame(width: 58, height: 58)

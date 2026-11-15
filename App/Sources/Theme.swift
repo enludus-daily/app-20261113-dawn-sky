@@ -169,21 +169,18 @@ struct HairButton: View {
 struct SkyBackdrop: View {
     let colors: [RGB]
     var glow: Double = 0.35
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
     var body: some View {
         ZStack {
             LinearGradient(colors: colors.map { Color($0) }, startPoint: .top, endPoint: .bottom)
             // 地平線のにじみ（日の光）
             RadialGradient(colors: [Tone.glow.opacity(glow), .clear], center: UnitPoint(x: 0.5, y: 1.05),
                            startRadius: 0, endRadius: 420)
-                .blendMode(.screen)
             // 文字の読みやすさのための、ごく薄い影
             LinearGradient(colors: [Color.black.opacity(0.12), .clear, Color.black.opacity(0.14)],
                            startPoint: .top, endPoint: .bottom)
         }
-        .animation(reduceMotion ? nil : .easeInOut(duration: 1.2), value: colors)
         .ignoresSafeArea()
+        .allowsHitTesting(false)
         .accessibilityHidden(true)
     }
 }

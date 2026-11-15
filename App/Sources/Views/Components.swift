@@ -231,7 +231,7 @@ struct WindowDial: View {
         let below = progress < 0
         let p = below ? CGPoint(x: center.x - radius, y: horizon + 6) : point(center: center, radius: radius, at: t)
         ZStack {
-            Circle().fill(Tone.glow.opacity(0.35)).frame(width: 64, height: 64).blur(radius: 14)
+            Circle().fill(RadialGradient(colors: [Tone.glow.opacity(0.45), .clear], center: .center, startRadius: 8, endRadius: 32)).frame(width: 64, height: 64)
             Circle().fill(Tone.glowSoft).frame(width: 40, height: 40)
             Circle().fill(done ? Color.white.opacity(0.9) : Tone.glow).frame(width: 22, height: 22)
             Circle().stroke(Color.white.opacity(0.9), lineWidth: 1.2).frame(width: 22, height: 22)
