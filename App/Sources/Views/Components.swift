@@ -194,6 +194,7 @@ struct WindowDial: View {
                 sun(center: center, radius: radius, horizon: horizon)
             }
         }
+        .allowsHitTesting(false)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(tr("起きる時刻から 15 分の窓", "Your 15-minute window after wake time")))
     }

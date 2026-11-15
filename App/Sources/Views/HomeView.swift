@@ -7,8 +7,7 @@ struct HomeView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
-        ZStack {
-            CurrentSky()
+        Group {
             if sizeClass == .regular {
                 HStack(alignment: .top, spacing: 0) {
                     ScrollView {
@@ -54,6 +53,8 @@ struct HomeView: View {
                 }
             }
         }
+        // 空は後ろの地として敷く（前の部品の当たり判定・読み上げに混ざらないように）
+        .background { CurrentSky() }
         .alert(refusalTitle, isPresented: Binding(get: { model.refusal != nil }, set: { if !$0 { model.refusal = nil } })) {
             Button("OK", role: .cancel) {}
         } message: {
