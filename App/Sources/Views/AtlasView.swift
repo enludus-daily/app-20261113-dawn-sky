@@ -106,7 +106,7 @@ struct AtlasView: View {
                 Spacer()
             }
             .padding(.horizontal, 12)
-            .background(LinearGradient(colors: [Color.black.opacity(0.25), .clear], startPoint: .top, endPoint: .bottom).ignoresSafeArea(edges: .top))
+            .background(Rectangle().fill(.ultraThinMaterial).mask(LinearGradient(colors: [.black, .black, .clear], startPoint: .top, endPoint: .bottom)).ignoresSafeArea(edges: .top))
         }
         .sheet(item: Binding(get: { detail.map { PageRef(id: $0) } }, set: { detail = $0?.id })) { ref in
             PageDetailView(pageID: ref.id) {
