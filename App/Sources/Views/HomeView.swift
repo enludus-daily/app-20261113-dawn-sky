@@ -8,7 +8,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            Tone.ground.ignoresSafeArea()
+            CurrentSky()
             if sizeClass == .regular {
                 HStack(alignment: .top, spacing: 0) {
                     ScrollView {
@@ -69,8 +69,8 @@ struct HomeView: View {
                     .kerning(0.8)
                     .foregroundStyle(Tone.mute)
                 Text("あさやけ図鑑")
-                    .font(Typo.serif(26))
-                    .kerning(-0.6)
+                    .font(Typo.display(30, .ultraLight))
+                    .kerning(0.3)
                     .foregroundStyle(Tone.ink)
             }
             Spacer(minLength: 8)
@@ -82,13 +82,14 @@ struct HomeView: View {
                     Image(systemName: "square.grid.3x3")
                         .font(.system(size: 13))
                     Text(verbatim: "\(model.foundCount)/\(model.totalPages)")
-                        .font(Typo.serif(14))
+                        .font(Typo.display(14))
                         .monospacedDigit()
                 }
-                .foregroundStyle(Tone.dawnDeep)
+                .foregroundStyle(Tone.ink)
                 .padding(.horizontal, 12)
                 .frame(minHeight: 36)
-                .background(Capsule().stroke(Tone.dawnLine, lineWidth: 1))
+                .background(Capsule().fill(Tone.sheet))
+                .overlay(Capsule().stroke(Tone.hair, lineWidth: 0.8))
                 .contentShape(Capsule())
             }
             .buttonStyle(PressStyle())
@@ -147,7 +148,7 @@ struct WindowSection: View {
             VStack(spacing: 6) {
                 ZStack(alignment: .bottom) {
                     WindowDial(now: date, target: target, phase: phase)
-                        .frame(height: 132)
+                        .frame(height: 150)
                     HStack {
                         Text(verbatim: target.addingTimeInterval(-3600).clock)
                         Spacer()
@@ -188,7 +189,7 @@ struct WindowSection: View {
             switch phase {
             case .night(let next):
                 Text(verbatim: next.clock)
-                    .font(Typo.serif(44, .light))
+                    .font(Typo.numeral(64))
                     .kerning(-2)
                     .monospacedDigit()
                     .foregroundStyle(Tone.ink)
@@ -204,7 +205,7 @@ struct WindowSection: View {
             case .before(let target):
                 let minutes = Int(ceil(target.timeIntervalSince(date) / 60))
                 Text(verbatim: date.clock)
-                    .font(Typo.serif(44, .light))
+                    .font(Typo.numeral(64))
                     .kerning(-2)
                     .monospacedDigit()
                     .foregroundStyle(Tone.ink)
@@ -215,7 +216,7 @@ struct WindowSection: View {
             case .open(_, let left):
                 Eyebrow("窓の残り", color: Tone.glowDeep)
                 Text(verbatim: String(format: "%d:%02d", left / 60, left % 60))
-                    .font(Typo.serif(48, .light))
+                    .font(Typo.numeral(76))
                     .kerning(-2)
                     .monospacedDigit()
                     .contentTransition(.numericText(countsDown: true))
@@ -225,7 +226,7 @@ struct WindowSection: View {
                     .foregroundStyle(Tone.mute)
             case .late(let target):
                 Text("寝坊の朝")
-                    .font(Typo.serif(34, .light))
+                    .font(Typo.numeral(34))
                     .foregroundStyle(Tone.ink)
                 Text(verbatim: tr("窓は \(target.addingTimeInterval(900).clock) に閉じました。撮ると、マスは欠けて残ります",
                                   "Your window closed at \(target.addingTimeInterval(900).clock). You can still shoot — the square stays chipped"))
@@ -250,12 +251,13 @@ struct SunButton: View {
         } label: {
             VStack(spacing: 8) {
                 ZStack {
-                    Circle().fill(Tone.glowSoft).frame(width: 84, height: 84)
-                    Circle().fill(Tone.glow).frame(width: 68, height: 68)
-                    Circle().stroke(Color.white, lineWidth: 2.5).frame(width: 58, height: 58)
+                    Circle().fill(Tone.glow.opacity(0.45)).frame(width: 110, height: 110).blur(radius: 22)
+                    Circle().fill(Tone.glowSoft).frame(width: 86, height: 86)
+                    Circle().fill(LinearGradient(colors: [Color(hex: 0xFFE2B8), Tone.glow], startPoint: .top, endPoint: .bottom)).frame(width: 68, height: 68)
+                    Circle().stroke(Color.white.opacity(0.9), lineWidth: 1.5).frame(width: 58, height: 58)
                     Image(systemName: "camera")
                         .font(.system(size: 20, weight: .regular))
-                        .foregroundStyle(Tone.ink.opacity(0.8))
+                        .foregroundStyle(Tone.night)
                 }
                 Text("空を撮る")
                     .font(.system(size: 14, weight: .medium))
@@ -284,7 +286,7 @@ struct TodayCard: View {
                     VStack(alignment: .leading, spacing: 3) {
                         Eyebrow("今朝の空")
                         Text(verbatim: page.name)
-                            .font(Typo.serif(20))
+                            .font(Typo.display(20))
                             .foregroundStyle(Tone.ink)
                         Text(verbatim: resultLine(record))
                             .font(Typo.small)
@@ -295,7 +297,6 @@ struct TodayCard: View {
                 }
                 .padding(14)
                 .background(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).fill(Tone.sheet))
-                .overlay(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).stroke(Tone.hair, lineWidth: 1))
             }
             .buttonStyle(PressStyle(scale: 0.98))
             .multilineTextAlignment(.leading)
@@ -337,14 +338,14 @@ struct StatsRow: View {
         VStack(spacing: 2) {
             HStack(alignment: .firstTextBaseline, spacing: 1) {
                 Text(verbatim: value)
-                    .font(Typo.serif(28))
+                    .font(Typo.display(30, .ultraLight))
                     .kerning(-1)
                     .monospacedDigit()
                     .contentTransition(.numericText())
                     .foregroundStyle(Tone.ink)
                 if !suffix.isEmpty {
                     Text(verbatim: suffix)
-                        .font(Typo.serif(13))
+                        .font(Typo.display(13))
                         .foregroundStyle(Tone.mute)
                 }
             }
@@ -367,8 +368,8 @@ struct MonthSection: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
                 Text(verbatim: monthTitle(m.year, m.month))
-                    .font(Typo.serif(21))
-                    .kerning(-0.4)
+                    .font(Typo.display(21))
+                    .kerning(0.3)
                     .foregroundStyle(Tone.ink)
                 if model.showsSample {
                     Text("見本")
@@ -466,7 +467,7 @@ struct YearSection: View {
                     .frame(maxWidth: 240)
                 VStack(spacing: 0) {
                     Text(verbatim: "\(model.year)")
-                        .font(Typo.serif(30, .light))
+                        .font(Typo.numeral(30))
                         .kerning(-1)
                         .foregroundStyle(Tone.ink)
                     Text(verbatim: tr("\(count) 朝", "\(count) mornings"))
@@ -496,7 +497,7 @@ struct YearSection: View {
                     }
                     .foregroundStyle(Tone.dawnDeep)
                     .padding(14)
-                    .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Tone.hair, lineWidth: 1))
+                    .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.sheet))
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(PressStyle(scale: 0.98))
@@ -521,7 +522,7 @@ struct ProStats: View {
                     .foregroundStyle(Tone.mute)
                 Spacer()
                 Text(verbatim: offsetText(offset))
-                    .font(Typo.serif(17))
+                    .font(Typo.display(17))
                     .foregroundStyle(Tone.ink)
             }
             VStack(alignment: .leading, spacing: 6) {
@@ -553,7 +554,6 @@ struct ProStats: View {
         }
         .padding(14)
         .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.sheet))
-        .overlay(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Tone.hair, lineWidth: 1))
     }
 
     private func offsetText(_ value: Double?) -> String {
@@ -573,7 +573,7 @@ struct AtlasPreview: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
                 Text("空の図鑑")
-                    .font(Typo.serif(21))
+                    .font(Typo.display(21))
                     .foregroundStyle(Tone.ink)
                 Spacer()
                 Button("すべて見る") { model.cover = .atlas }

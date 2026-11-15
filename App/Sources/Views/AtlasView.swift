@@ -23,23 +23,23 @@ struct AtlasView: View {
 
     var body: some View {
         ZStack {
-            Tone.ground.ignoresSafeArea()
+            CurrentSky()
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     VStack(alignment: .leading, spacing: 4) {
                         Eyebrow("ATLAS OF MORNINGS")
                         HStack(alignment: .firstTextBaseline) {
                             Text("空の図鑑")
-                                .font(Typo.serif(32))
-                                .kerning(-0.8)
+                                .font(Typo.display(34, .ultraLight))
+                                .kerning(0.3)
                                 .foregroundStyle(Tone.ink)
                             Spacer()
                             Text(verbatim: "\(found.count)")
-                                .font(Typo.serif(30, .light))
+                                .font(Typo.numeral(30))
                                 .monospacedDigit()
                                 .foregroundStyle(Tone.ink)
                             Text(verbatim: "/ \(SkyCatalog.all.count)")
-                                .font(Typo.serif(15))
+                                .font(Typo.display(15))
                                 .foregroundStyle(Tone.mute)
                         }
                         Text("空の色と、起きた朝のできごとで、ページが埋まっていきます。")
@@ -77,7 +77,7 @@ struct AtlasView: View {
                             .font(.system(size: 13, weight: .medium))
                             .foregroundStyle(Tone.dawnDeep)
                             .padding(14)
-                            .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Tone.hair, lineWidth: 1))
+                            .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.sheet))
                         }
                         .buttonStyle(PressStyle(scale: 0.98))
                         .multilineTextAlignment(.leading)
@@ -106,7 +106,7 @@ struct AtlasView: View {
                 Spacer()
             }
             .padding(.horizontal, 12)
-            .background(Tone.ground.opacity(0.94).ignoresSafeArea(edges: .top))
+            .background(LinearGradient(colors: [Color.black.opacity(0.25), .clear], startPoint: .top, endPoint: .bottom).ignoresSafeArea(edges: .top))
         }
         .sheet(item: Binding(get: { detail.map { PageRef(id: $0) } }, set: { detail = $0?.id })) { ref in
             PageDetailView(pageID: ref.id) {
@@ -117,13 +117,13 @@ struct AtlasView: View {
                 }
             }
             .environment(model)
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .modifier(JapaneseForScreenshots())
         }
         .sheet(isPresented: $paywall) {
             PaywallView(reason: .rarePage)
                 .environment(model)
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
                 .modifier(JapaneseForScreenshots())
         }
     }
@@ -149,7 +149,7 @@ struct AtlasView: View {
             .font(.system(size: 13, weight: .medium))
             .foregroundStyle(kind == value ? Tone.ink : Tone.mute)
             .frame(maxWidth: .infinity, minHeight: 36)
-            .background(Capsule().fill(kind == value ? Tone.sheet : .clear).shadow(color: kind == value ? Tone.shadow : .clear, radius: 4, y: 1))
+            .background(Capsule().fill(kind == value ? Tone.dawnSoft : .clear))
             .contentShape(Capsule())
         }
         .buttonStyle(.plain)
@@ -179,19 +179,19 @@ struct PageDetailView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     ZStack {
                         if firstDay != nil {
-                            RoundedRectangle(cornerRadius: Radius.l, style: .continuous)
-                                .fill(skyGradient(colors: page.colors))
+                            PlateShape().fill(skyGradient(colors: page.colors))
+                            PlateShape().fill(LinearGradient(colors: [Color.white.opacity(0.16), .clear], startPoint: .top, endPoint: .center))
                         } else {
-                            RoundedRectangle(cornerRadius: Radius.l, style: .continuous)
-                                .stroke(Tone.missing, style: StrokeStyle(lineWidth: 1, dash: [4, 4]))
-                            Text(verbatim: "？").font(Typo.serif(40)).foregroundStyle(Tone.mute)
+                            PlateShape().fill(Tone.sheet)
+                            PlateShape().stroke(Tone.missing, style: StrokeStyle(lineWidth: 0.8, dash: [2, 4]))
+                            Text(verbatim: "？").font(Typo.display(40, .ultraLight)).foregroundStyle(Tone.mute)
                         }
                         if !unlocked {
-                            RoundedRectangle(cornerRadius: Radius.l, style: .continuous).fill(Tone.ground.opacity(0.5))
-                            Image(systemName: "lock").font(.system(size: 20)).foregroundStyle(Tone.dawnDeep)
+                            PlateShape().fill(Color.black.opacity(0.35))
+                            Image(systemName: "lock").font(.system(size: 20, weight: .light)).foregroundStyle(Tone.ink)
                         }
                     }
-                    .frame(height: 220)
+                    .frame(height: 280)
                     .shadow(color: Tone.shadow, radius: 12, y: 6)
                     HStack(spacing: 8) {
                         RarityDots(level: page.rarity)
@@ -202,13 +202,17 @@ struct PageDetailView: View {
                             .font(Typo.caption)
                             .foregroundStyle(Tone.mute)
                     }
+                    Text(verbatim: page.plateNumber)
+                        .font(.system(size: 10, weight: .medium).monospacedDigit())
+                        .kerning(1.6)
+                        .foregroundStyle(Tone.mute)
                     Text(verbatim: firstDay != nil || unlocked ? page.name : "？")
-                        .font(Typo.serif(30))
-                        .kerning(-0.8)
+                        .font(Typo.display(34, .ultraLight))
+                        .kerning(0.3)
                         .foregroundStyle(Tone.ink)
                     if firstDay != nil && unlocked {
                         Text(verbatim: page.note)
-                            .font(Typo.serif(16))
+                            .font(Typo.display(16))
                             .foregroundStyle(Tone.ink)
                             .lineSpacing(3)
                             .fixedSize(horizontal: false, vertical: true)
@@ -223,7 +227,7 @@ struct PageDetailView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Eyebrow("最初に見つけた朝")
                             Text(verbatim: date.formatted(Date.FormatStyle().year().month(.wide).day().locale(Lang.locale)))
-                                .font(Typo.serif(17))
+                                .font(Typo.display(17))
                                 .foregroundStyle(Tone.ink)
                         }
                     }
@@ -251,7 +255,8 @@ struct PageDetailView: View {
                 .frame(maxWidth: Space.readable)
                 .frame(maxWidth: .infinity)
             }
-            .background(Tone.ground.ignoresSafeArea())
+            .background(SkyBackdrop(colors: firstDay != nil ? SkyClock.backdrop(colors: page.colors) : model.backdropColors, glow: 0.2))
+            .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button { dismiss() } label: { Image(systemName: "xmark").foregroundStyle(Tone.ink) }

@@ -42,7 +42,7 @@ struct CaptureChooser: View {
 
     private var fallback: some View {
         ZStack {
-            Tone.ground.ignoresSafeArea()
+            CurrentSky()
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     HStack {
@@ -62,7 +62,7 @@ struct CaptureChooser: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Eyebrow("カメラの許可がありません", color: Tone.glowDeep)
                             Text("空を撮るには、カメラをオンに")
-                                .font(Typo.serif(24))
+                                .font(Typo.display(26, .light))
                                 .foregroundStyle(Tone.ink)
                             Text("設定 › あさやけ図鑑 › カメラ をオンにしてください。写真は色を読むためだけに使い、この iPhone の外には送りません。")
                                 .font(Typo.body)
@@ -76,7 +76,7 @@ struct CaptureChooser: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Eyebrow("この端末ではカメラが使えません")
                             Text("見本の空で試す")
-                                .font(Typo.serif(24))
+                                .font(Typo.display(26, .light))
                                 .foregroundStyle(Tone.ink)
                             Text("空の色が図鑑に入るまでを、見本の写真で試せます。見本は記録には入りません。")
                                 .font(Typo.body)
@@ -90,7 +90,7 @@ struct CaptureChooser: View {
                                 model.capture(sample: sky)
                             } label: {
                                 VStack(spacing: 6) {
-                                    RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
+                                    PlateShape()
                                         .fill(skyGradient(colors: sky.stops))
                                         .aspectRatio(3 / 4, contentMode: .fit)
                                     Text(verbatim: sky.name)
@@ -161,10 +161,10 @@ struct RevealView: View {
 
     var body: some View {
         ZStack {
-            Tone.ground.ignoresSafeArea()
-            skyGradient(record.swatches)
-                .opacity(step >= 1 ? 0.28 : 0)
-                .ignoresSafeArea()
+            CurrentSky()
+            // 撮った空が、画面いっぱいの地になる
+            SkyBackdrop(colors: SkyClock.backdrop(from: record.swatches), glow: 0.25)
+                .opacity(step >= 1 ? 1 : 0)
             ScrollView {
                 VStack(spacing: 18) {
                     Text(verbatim: judgementLine)
@@ -204,7 +204,7 @@ struct RevealView: View {
             .padding(.bottom, 8)
             .frame(maxWidth: Space.readable)
             .frame(maxWidth: .infinity)
-            .background(Tone.ground.opacity(0.92).ignoresSafeArea(edges: .bottom))
+            .background(BottomFade())
         }
         .task {
             if reduceMotion || Launch.isStill {
@@ -242,9 +242,8 @@ struct RevealView: View {
                 }
             }
             .frame(width: 132, height: 176)
-            .clipShape(RoundedRectangle(cornerRadius: Radius.m, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Color.white.opacity(0.7), lineWidth: 1))
-            .shadow(color: Tone.shadowLift, radius: 10, y: 6)
+            .clipShape(PlateShape())
+            .shadow(color: Tone.shadowLift, radius: 16, y: 8)
             .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 10) {
                 ForEach(Array(record.swatches.enumerated()), id: \.offset) { i, swatch in
@@ -252,7 +251,7 @@ struct RevealView: View {
                         Circle()
                             .fill(Color(swatch.color))
                             .frame(width: 30, height: 30)
-                            .overlay(Circle().stroke(Color.white.opacity(0.8), lineWidth: 1))
+                            .overlay(Circle().stroke(Color.white.opacity(0.5), lineWidth: 0.8))
                         VStack(alignment: .leading, spacing: 0) {
                             Text(verbatim: hex(swatch.color))
                                 .font(.system(size: 12, design: .monospaced))
@@ -280,12 +279,13 @@ struct RevealView: View {
         ZStack {
             RoundedRectangle(cornerRadius: Radius.l, style: .continuous)
                 .stroke(Tone.missing, style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
-                .overlay(Text(verbatim: "？").font(Typo.serif(28)).foregroundStyle(Tone.mute))
+                .overlay(Text(verbatim: "？").font(Typo.display(30, .ultraLight)).foregroundStyle(Tone.mute))
                 .opacity(step >= 3 ? 0 : 1)
             HStack(spacing: 16) {
-                RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
+                PlateShape()
                     .fill(skyGradient(colors: page.colors))
                     .frame(width: 66, height: 88)
+                    .shadow(color: Tone.shadow, radius: 8, y: 4)
                 VStack(alignment: .leading, spacing: 5) {
                     HStack(spacing: 8) {
                         RarityDots(level: page.rarity)
@@ -302,8 +302,8 @@ struct RevealView: View {
                         }
                     }
                     Text(verbatim: page.name)
-                        .font(Typo.serif(24))
-                        .kerning(-0.5)
+                        .font(Typo.display(26, .light))
+                        .kerning(0.3)
                         .foregroundStyle(Tone.ink)
                     Text(verbatim: page.note)
                         .font(Typo.small)
@@ -319,7 +319,6 @@ struct RevealView: View {
             }
             .padding(16)
             .background(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).fill(Tone.sheet))
-            .overlay(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).stroke(Tone.hair, lineWidth: 1))
             .shadow(color: Tone.shadow, radius: 12, y: 5)
             .rotation3DEffect(.degrees(step >= 3 || reduceMotion ? 0 : -90), axis: (x: 0, y: 1, z: 0), perspective: 0.6)
             .scaleEffect(step == 3 && !reduceMotion && !Launch.isStill ? 1.03 : 1)
@@ -352,7 +351,7 @@ struct RevealView: View {
                     .font(Typo.small)
                     .foregroundStyle(Tone.mute)
                 Text(verbatim: "\(reveal.streak)")
-                    .font(Typo.serif(30))
+                    .font(Typo.display(30))
                     .monospacedDigit()
                     .contentTransition(.numericText())
                     .foregroundStyle(Tone.ink)
@@ -378,7 +377,7 @@ struct RevealView: View {
         VStack(alignment: .leading, spacing: 6) {
             Eyebrow("空のメモ")
             Text(verbatim: SkyNotes.note(for: record.day).text)
-                .font(Typo.serif(15))
+                .font(Typo.display(15))
                 .foregroundStyle(Tone.ink)
                 .lineSpacing(3)
                 .fixedSize(horizontal: false, vertical: true)

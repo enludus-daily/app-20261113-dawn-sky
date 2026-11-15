@@ -166,6 +166,24 @@ final class AppModel {
 
     func isUnlocked(_ page: SkyPage) -> Bool { !page.isPro || isPro }
 
+    /// 画面の地の色：今日撮った朝はその空の色、ほかは時刻の空（夜 → 夜明け → 朝 → 昼 → 夕暮れ）
+    var backdropColors: [RGB] {
+        if let today = todayRecord, !today.isSample, !today.swatches.isEmpty {
+            return SkyClock.backdrop(from: today.swatches)
+        }
+        return SkyClock.colors(at: now, calendar: calendar)
+    }
+
+    /// 地平のにじみの強さ：夜は弱く、夜明けと夕方に強く
+    var backdropGlow: Double {
+        let h = calendar.component(.hour, from: now)
+        switch h {
+        case 5...7, 16...18: return 0.45
+        case 8...15: return 0.18
+        default: return 0.08
+        }
+    }
+
     // MARK: - 撮る
 
     /// 「空を撮る」を押した

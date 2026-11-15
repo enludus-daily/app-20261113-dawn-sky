@@ -17,7 +17,7 @@ struct SettingsView: View {
                             Toggle(isOn: $perDay.animation(.easeOut(duration: 0.25))) {
                                 Text("曜日ごとに変える")
                             }
-                            .tint(Tone.dawnDeep)
+                            .tint(Tone.glow)
                             .padding(.vertical, 10)
                             if perDay {
                                 ForEach(1...7, id: \.self) { weekday in
@@ -39,14 +39,14 @@ struct SettingsView: View {
                         Toggle(isOn: Binding(get: { model.reminderOn }, set: { on in Task { await model.setReminder(on) } })) {
                             Text("起きる時刻にお知らせする")
                         }
-                        .tint(Tone.dawnDeep)
+                        .tint(Tone.glow)
                         note("端末の中だけで予約するお知らせです。目覚ましの代わりではありません。")
                     }
                     section("写真") {
                         Toggle(isOn: $model.keepPhotos) {
                             Text("撮った写真を小さく残す")
                         }
-                        .tint(Tone.dawnDeep)
+                        .tint(Tone.glow)
                         note("オフにすると、写真は色を読んだらすぐに捨て、色だけを残します。写真も色も、この iPhone の外には送りません。")
                         Button(role: .destructive) {
                             confirmDelete = true
@@ -87,7 +87,7 @@ struct SettingsView: View {
                         Toggle(isOn: $model.hapticsOn) {
                             Text("振動")
                         }
-                        .tint(Tone.dawnDeep)
+                        .tint(Tone.glow)
                         note("音は鳴らしません。朝は家族が寝ていることが多いためです。")
                     }
                     section("Pro") {
@@ -124,7 +124,7 @@ struct SettingsView: View {
                 .frame(maxWidth: Space.readable)
                 .frame(maxWidth: .infinity)
             }
-            .background(Tone.ground.ignoresSafeArea())
+            .onSky()
             .navigationTitle(Text("設定"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -153,7 +153,6 @@ struct SettingsView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
                 .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.sheet))
-                .overlay(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Tone.hair, lineWidth: 1))
         }
     }
 

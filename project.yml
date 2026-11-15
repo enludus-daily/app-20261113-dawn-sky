@@ -31,7 +31,8 @@ targets:
         # 空を撮るためのカメラ（写真は色を読むためだけに使い、端末の外に送らない）。文言は InfoPlist.xcstrings で日本語・英語
         NSCameraUsageDescription: "その朝の空の色を読んで、図鑑とパレットに入れるために使います。写真はこの iPhone の外に送りません。"
         LSRequiresIPhoneOS: true
-        UILaunchScreen: {}
+        UILaunchScreen:
+          UIColorName: LaunchBackground
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
         UISupportedInterfaceOrientations:

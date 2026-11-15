@@ -1,6 +1,6 @@
 import SwiftUI
 
-// 題材の現物を部品にする：空の色の「マス」、地平線と日の出の弧の「窓」、1 年の「輪」、図鑑の「色見本のカード」
+// 題材の現物を部品にする：空の色の「マス」、地平線と日の出の弧の「窓」、1 年の「輪」、写真集の「図版」
 
 /// 角の丸みを大きさに合わせたマス
 struct TileShape: Shape {
@@ -74,7 +74,7 @@ struct SkyTile: View {
                     ChippedTileShape().stroke(Tone.missing, style: StrokeStyle(lineWidth: 0.8, dash: [2, 2]))
                 } else {
                     TileShape().fill(skyGradient(record.swatches))
-                    TileShape().stroke(Color.white.opacity(0.5), lineWidth: 0.5)
+                    TileShape().stroke(Color.white.opacity(0.3), lineWidth: 0.5)
                     if record.result == .early {
                         // 早起きの印：小さな日の光
                         GeometryReader { geo in
@@ -183,7 +183,7 @@ struct WindowDial: View {
                 .stroke(Tone.hair, lineWidth: 1)
                 // 弧（起きる前）
                 arc(center: center, radius: radius, from: 0, to: windowStart)
-                    .stroke(Tone.dawnLine, style: StrokeStyle(lineWidth: 1, dash: [2, 4]))
+                    .stroke(Tone.dawnLine, style: StrokeStyle(lineWidth: 0.8, dash: [1.5, 4]))
                 // 弧（窓の 15 分）
                 arc(center: center, radius: radius, from: windowStart, to: 1)
                     .stroke(Tone.glow, style: StrokeStyle(lineWidth: 3, lineCap: .round))
@@ -231,9 +231,10 @@ struct WindowDial: View {
         let below = progress < 0
         let p = below ? CGPoint(x: center.x - radius, y: horizon + 6) : point(center: center, radius: radius, at: t)
         ZStack {
-            Circle().fill(Tone.glowSoft).frame(width: 44, height: 44)
-            Circle().fill(done ? Tone.dawn : Tone.glow).frame(width: 22, height: 22)
-            Circle().stroke(Color.white.opacity(0.9), lineWidth: 1.5).frame(width: 22, height: 22)
+            Circle().fill(Tone.glow.opacity(0.35)).frame(width: 64, height: 64).blur(radius: 14)
+            Circle().fill(Tone.glowSoft).frame(width: 40, height: 40)
+            Circle().fill(done ? Color.white.opacity(0.9) : Tone.glow).frame(width: 22, height: 22)
+            Circle().stroke(Color.white.opacity(0.9), lineWidth: 1.2).frame(width: 22, height: 22)
         }
         .position(p)
         .mask(alignment: .top) {
@@ -294,7 +295,7 @@ struct RarityDots: View {
     }
 }
 
-/// 図鑑の色見本のカード
+/// 図鑑の 1 枚：枠のない写真集の図版（空の色の版）。下に番号と名前を小さく添える
 struct PageCard: View {
     let page: SkyPage
     let found: Bool
@@ -304,24 +305,29 @@ struct PageCard: View {
         VStack(alignment: .leading, spacing: 6) {
             ZStack {
                 if found {
-                    RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
-                        .fill(skyGradient(colors: page.colors))
+                    PlateShape().fill(skyGradient(colors: page.colors))
+                    // 図版の光沢：上からわずかに白
+                    PlateShape().fill(LinearGradient(colors: [Color.white.opacity(0.16), .clear], startPoint: .top, endPoint: .center))
                     if !unlocked {
-                        RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.ground.opacity(0.55))
-                        Image(systemName: "lock").font(.system(size: 13)).foregroundStyle(Tone.dawnDeep)
+                        PlateShape().fill(Color.black.opacity(0.35))
+                        Image(systemName: "lock").font(.system(size: 13, weight: .light)).foregroundStyle(Tone.ink)
                     }
                 } else {
-                    RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
-                        .stroke(Tone.missing, style: StrokeStyle(lineWidth: 0.8, dash: [3, 3]))
+                    PlateShape().fill(Tone.sheet)
+                    PlateShape().stroke(Tone.missing, style: StrokeStyle(lineWidth: 0.6, dash: [2, 3]))
                     Image(systemName: unlocked ? "questionmark" : "lock")
-                        .font(.system(size: 13, weight: .light))
+                        .font(.system(size: 13, weight: .ultraLight))
                         .foregroundStyle(Tone.mute)
                 }
             }
             .aspectRatio(3 / 4, contentMode: .fit)
-            .shadow(color: found ? Tone.shadow : .clear, radius: 8, y: 4)
+            .shadow(color: found ? Tone.shadow : .clear, radius: 10, y: 6)
+            Text(verbatim: page.plateNumber)
+                .font(.system(size: 9, weight: .medium).monospacedDigit())
+                .kerning(1.2)
+                .foregroundStyle(Tone.mute)
             Text(verbatim: found ? page.name : "？")
-                .font(Typo.serif(13))
+                .font(Typo.display(12.5, .regular))
                 .foregroundStyle(found ? Tone.ink : Tone.mute)
                 .lineLimit(2)
                 .minimumScaleFactor(0.8)
@@ -330,6 +336,21 @@ struct PageCard: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(found ? "\(page.name)、\(page.rarityName)" : tr("まだ見つけていない空", "Not found yet")))
+    }
+}
+
+/// 写真集の図版の形：角はほとんど丸めない（印画紙の角）
+struct PlateShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path(roundedRect: rect, cornerRadius: 3, style: .continuous)
+    }
+}
+
+extension SkyPage {
+    /// 図版の番号（No.07）
+    var plateNumber: String {
+        let i = (SkyCatalog.all.firstIndex { $0.id == id } ?? 0) + 1
+        return String(format: "No.%02d", i)
     }
 }
 

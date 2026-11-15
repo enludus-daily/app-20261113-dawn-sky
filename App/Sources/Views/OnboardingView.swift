@@ -9,7 +9,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Tone.ground.ignoresSafeArea()
+            CurrentSky()
             VStack(spacing: 0) {
                 HStack(spacing: 6) {
                     ForEach(0..<3, id: \.self) { i in
@@ -60,7 +60,7 @@ struct OnboardingView: View {
             .padding(.bottom, 8)
             .frame(maxWidth: Space.readable)
             .frame(maxWidth: .infinity)
-            .background(Tone.ground.ignoresSafeArea(edges: .bottom))
+            .background(BottomFade())
         }
         .onAppear {
             let m = model.schedule.minutes(forWeekday: 2)
@@ -76,8 +76,8 @@ struct OnboardingView: View {
                 .frame(height: 150)
             Eyebrow("1 / 3")
             Text("起きてからの 15 分が、空の図鑑になる")
-                .font(Typo.serif(28))
-                .kerning(-0.8)
+                .font(Typo.display(30, .ultraLight))
+                .kerning(0.3)
                 .foregroundStyle(Tone.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Text("起きると決めた時刻から 15 分以内に空を撮ると、その朝の空の色が 1 マスになって、今月のパレットと図鑑に入ります。")
@@ -95,7 +95,6 @@ struct OnboardingView: View {
             PaletteGrid(cells: cells, spacing: 5)
                 .padding(14)
                 .background(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).fill(Tone.sheet))
-                .overlay(RoundedRectangle(cornerRadius: Radius.l, style: .continuous).stroke(Tone.hair, lineWidth: 1))
                 .overlay(alignment: .topTrailing) {
                     Text("見本").font(Typo.label).foregroundStyle(Tone.glowDeep)
                         .padding(.horizontal, 8).padding(.vertical, 3)
@@ -104,8 +103,8 @@ struct OnboardingView: View {
                 }
             Eyebrow("2 / 3")
             Text("寝坊した朝は、マスが欠ける")
-                .font(Typo.serif(28))
-                .kerning(-0.8)
+                .font(Typo.display(30, .ultraLight))
+                .kerning(0.3)
                 .foregroundStyle(Tone.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Text("罰はありません。欠けたマスが見えるだけ。めずらしい空は、早起きした朝にしか出会えません。図鑑は 48 ページ。")
@@ -120,8 +119,8 @@ struct OnboardingView: View {
         VStack(alignment: .leading, spacing: 18) {
             Eyebrow("3 / 3")
             Text("起きる時刻を決める")
-                .font(Typo.serif(28))
-                .kerning(-0.8)
+                .font(Typo.display(30, .ultraLight))
+                .kerning(0.3)
                 .foregroundStyle(Tone.ink)
             DatePicker("", selection: $wake, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)

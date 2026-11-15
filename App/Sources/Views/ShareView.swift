@@ -35,7 +35,7 @@ struct ShareView: View {
                 .padding(20)
                 .frame(maxWidth: .infinity)
             }
-            .background(Tone.ground.ignoresSafeArea())
+            .onSky()
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 Group {
                     if style.isPro && !model.isPro {
@@ -49,9 +49,9 @@ struct ShareView: View {
                                 Image(systemName: "square.and.arrow.up").font(.system(size: 14, weight: .medium))
                                 Text("共有する").font(.system(size: 16, weight: .semibold))
                             }
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Tone.night)
                             .frame(maxWidth: .infinity, minHeight: 52)
-                            .background(Capsule().fill(Tone.dawnDeep))
+                            .background(Capsule().fill(Color.white.opacity(0.94)))
                         }
                         .accessibilityIdentifier("main.shareLink")
                     } else {
@@ -61,7 +61,7 @@ struct ShareView: View {
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
                 .padding(.bottom, 8)
-                .background(Tone.ground.ignoresSafeArea(edges: .bottom))
+                .background(BottomFade())
             }
             .navigationTitle(Text("共有カード"))
             .navigationBarTitleDisplayMode(.inline)
@@ -134,7 +134,9 @@ struct ShareCard: View {
 
     var body: some View {
         ZStack {
-            Tone.sheet
+            // カードの地も夜明けの空（白い文字が載る）
+            LinearGradient(colors: SkyClock.colors(minute: 6 * 60 + 10).map { Color($0) }, startPoint: .top, endPoint: .bottom)
+            RadialGradient(colors: [Tone.glow.opacity(0.35), .clear], center: UnitPoint(x: 0.5, y: 1.1), startRadius: 0, endRadius: 300)
             VStack(alignment: .leading, spacing: 14) {
                 HStack(alignment: .firstTextBaseline) {
                     Text(verbatim: tr("あさやけ図鑑", "Dawn Atlas"))
@@ -150,8 +152,8 @@ struct ShareCard: View {
                 switch style {
                 case .month:
                     Text(verbatim: tr("今月の空のパレット", "This month's sky palette"))
-                        .font(Typo.serif(22))
-                        .kerning(-0.5)
+                        .font(Typo.display(22))
+                        .kerning(0.3)
                         .foregroundStyle(Tone.ink)
                     PaletteGrid(cells: cells, spacing: 5)
                     let records: [DayRecord] = cells.compactMap { (cell: MonthCell) -> DayRecord? in if case .record(let r) = cell.state { return r } else { return nil } }
@@ -165,21 +167,21 @@ struct ShareCard: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                         if let top = Self.mostFrequent(records) {
                             Text(verbatim: tr("今月いちばん多かった空：\(top)", "Most frequent sky: \(top)"))
-                                .font(Typo.serif(12))
+                                .font(Typo.display(12))
                                 .foregroundStyle(Tone.mute)
                         }
                     }
                 case .ring:
                     Text(verbatim: tr("1 年の朝の輪", "A year of mornings"))
-                        .font(Typo.serif(22))
-                        .kerning(-0.5)
+                        .font(Typo.display(22))
+                        .kerning(0.3)
                         .foregroundStyle(Tone.ink)
                     YearRing(days: yearDays, lineWidthRatio: 0.34)
                         .padding(.horizontal, 28)
                 case .strip:
                     Text(verbatim: tr("朝の帯：最近の 30 朝", "Morning strip: last 30"))
-                        .font(Typo.serif(22))
-                        .kerning(-0.5)
+                        .font(Typo.display(22))
+                        .kerning(0.3)
                         .foregroundStyle(Tone.ink)
                     HStack(spacing: 2) {
                         ForEach(strip) { record in
@@ -212,7 +214,7 @@ struct ShareCard: View {
     private func figure(_ value: String, _ label: String) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(verbatim: value)
-                .font(Typo.serif(20))
+                .font(Typo.display(20))
                 .monospacedDigit()
                 .foregroundStyle(Tone.ink)
             Text(verbatim: label)

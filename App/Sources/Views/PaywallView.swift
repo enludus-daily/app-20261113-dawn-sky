@@ -17,8 +17,8 @@ struct PaywallView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Eyebrow(headline, color: Tone.glowDeep)
                         Text("朝を、1 年ぶんの絵に")
-                            .font(Typo.serif(28))
-                            .kerning(-0.8)
+                            .font(Typo.display(30, .ultraLight))
+                            .kerning(0.3)
                             .foregroundStyle(Tone.ink)
                         Text("あさやけ図鑑 Pro は 1 回だけの買い切りです。サブスクではありません。")
                             .font(.system(size: 13))
@@ -33,7 +33,6 @@ struct PaywallView: View {
                         Feature(systemName: "moon.zzz", title: "休む日", detail: "体調の悪い日や旅行の日に。続けた朝を途切れさせません。", last: true)
                     }
                     .background(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).fill(Tone.sheet))
-                    .overlay(RoundedRectangle(cornerRadius: Radius.m, style: .continuous).stroke(Tone.hair, lineWidth: 1))
                     Text("空を撮る・今月のパレット・1 年の輪・図鑑の 30 ページ・今月のパレットの共有は、ずっと無料です。")
                         .font(.system(size: 12))
                         .foregroundStyle(Tone.mute)
@@ -43,7 +42,7 @@ struct PaywallView: View {
                 .frame(maxWidth: Space.readable)
                 .frame(maxWidth: .infinity)
             }
-            .background(Tone.ground.ignoresSafeArea())
+            .onSky()
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 VStack(spacing: 10) {
                     buyArea
@@ -67,11 +66,7 @@ struct PaywallView: View {
                 .padding(.bottom, 8)
                 .frame(maxWidth: Space.readable)
                 .frame(maxWidth: .infinity)
-                .background(
-                    Tone.ground
-                        .overlay(alignment: .top) { Rectangle().fill(Tone.hair).frame(height: 1) }
-                        .ignoresSafeArea(edges: .bottom)
-                )
+                .background(BottomFade())
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -100,11 +95,11 @@ struct PaywallView: View {
             ForEach(["fire-sky", "horizon-glow", "lingering-stars"], id: \.self) { id in
                 if let page = SkyCatalog.page(id) {
                     VStack(alignment: .leading, spacing: 4) {
-                        RoundedRectangle(cornerRadius: Radius.m, style: .continuous)
+                        PlateShape()
                             .fill(skyGradient(colors: page.colors))
                             .aspectRatio(3 / 4, contentMode: .fit)
                         Text(verbatim: page.name)
-                            .font(Typo.serif(11))
+                            .font(Typo.display(11))
                             .foregroundStyle(Tone.ink)
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
@@ -141,13 +136,13 @@ struct PaywallView: View {
                     }
                 } label: {
                     HStack(spacing: 8) {
-                        if buying { ProgressView().tint(.white) }
+                        if buying { ProgressView().tint(Tone.night) }
                         Text(verbatim: tr("\(product.displayPrice) で Pro にする（買い切り）", "Get Pro for \(product.displayPrice) (one-time)"))
                             .font(.system(size: 16, weight: .semibold))
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Tone.night)
                     .frame(maxWidth: .infinity, minHeight: 52)
-                    .background(Capsule().fill(Tone.dawnDeep))
+                    .background(Capsule().fill(Color.white.opacity(0.94)))
                 }
                 .buttonStyle(PressStyle(scale: 0.97))
                 .disabled(buying)

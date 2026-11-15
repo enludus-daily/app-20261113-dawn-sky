@@ -30,8 +30,8 @@ struct RootView: View {
         }
         .animation(.easeOut(duration: 0.35), value: model.onboarded)
         .environment(model)
-        // 撮った空の色が主役。淡い地の上で色が正しく見えるよう、ライトに固定する（StudyReel と同じ）
-        .preferredColorScheme(.light)
+        // 地はいつも空のグラデーション（白い文字）。システムの部品も暗い地の形にそろえる
+        .preferredColorScheme(.dark)
         .modifier(JapaneseForScreenshots())
         .fullScreenCover(item: $model.cover) { cover in
             Group {
@@ -41,13 +41,13 @@ struct RootView: View {
                 }
             }
             .environment(model)
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .modifier(JapaneseForScreenshots())
         }
         .sheet(item: $model.activeSheet) { sheet in
             sheetView(sheet)
                 .environment(model)
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
                 .modifier(JapaneseForScreenshots())
         }
         .sensoryFeedback(trigger: model.pressTick) { _, _ in model.hapticsOn ? .selection : nil }

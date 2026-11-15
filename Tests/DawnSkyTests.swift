@@ -285,3 +285,47 @@ struct JournalTests {
         #expect(kinds >= 4)
     }
 }
+
+/// 画面の地の色（時刻で変わる空）
+struct SkyClockTests {
+    @Test func keyTimesReturnTheirOwnColors() {
+        let dawn = SkyClock.keys.first { $0.minute == 6 * 60 }!
+        #expect(SkyClock.colors(minute: 6 * 60) == [dawn.top, dawn.middle, dawn.bottom])
+    }
+
+    @Test func midnightWrapsAroundSmoothly() {
+        #expect(SkyClock.colors(minute: 0) == SkyClock.colors(minute: 1440))
+        #expect(SkyClock.colors(minute: -60) == SkyClock.colors(minute: 23 * 60))
+    }
+
+    @Test func betweenKeysIsAMix() {
+        let a = SkyClock.colors(minute: 5 * 60)[2]
+        let b = SkyClock.colors(minute: 6 * 60)[2]
+        let mid = SkyClock.colors(minute: 5 * 60 + 30)[2]
+        #expect(abs(mid.r - (a.r + b.r) / 2) < 0.01)
+    }
+
+    @Test func nightIsDarkerThanDawnAndDawnIsWarmAtTheHorizon() {
+        let night = SkyClock.colors(minute: 23 * 60)
+        let dawn = SkyClock.colors(minute: 6 * 60 + 30)
+        #expect(SkyClock.luminance(night[1]) < SkyClock.luminance(dawn[1]))
+        #expect(dawn[2].r > dawn[2].b)
+    }
+
+    @Test func everyMinuteStaysDarkEnoughForWhiteText() {
+        for m in stride(from: 0, to: 1440, by: 5) {
+            for c in SkyClock.colors(minute: m) { #expect(SkyClock.luminance(c) < 0.5) }
+        }
+    }
+
+    @Test func capturedSkyIsDimmedForTheBackdropAndKeepsTopToBottomOrder() {
+        let bright = [Swatch(color: RGB(0.95, 0.85, 0.80), share: 0.4, height: 0.8),
+                      Swatch(color: RGB(0.70, 0.85, 1.0), share: 0.6, height: 0.2)]
+        let colors = SkyClock.backdrop(from: bright)
+        #expect(colors.count == 2)
+        for c in colors { #expect(SkyClock.luminance(c) < 0.42) }
+        // 上（height 0.2）は青い空、下は桃色
+        #expect(colors[0].b > colors[0].r)
+        #expect(colors[1].r > colors[1].b)
+    }
+}
