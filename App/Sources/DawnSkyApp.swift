@@ -31,7 +31,7 @@ struct RootView: View {
         .animation(.easeOut(duration: 0.35), value: model.onboarded)
         .environment(model)
         // 地はいつも空のグラデーション（白い文字）。システムの部品も暗い地の形にそろえる
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
         .modifier(JapaneseForScreenshots())
         .fullScreenCover(item: $model.cover) { cover in
             Group {
@@ -41,13 +41,13 @@ struct RootView: View {
                 }
             }
             .environment(model)
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
             .modifier(JapaneseForScreenshots())
         }
         .sheet(item: $model.activeSheet) { sheet in
             sheetView(sheet)
                 .environment(model)
-                .preferredColorScheme(.dark)
+                .preferredColorScheme(.light)
                 .modifier(JapaneseForScreenshots())
         }
         .sensoryFeedback(trigger: model.pressTick) { _, _ in model.hapticsOn ? .selection : nil }

@@ -199,7 +199,7 @@ extension View {
     func onSky() -> some View {
         background(CurrentSky())
             .toolbarBackground(.hidden, for: .navigationBar)
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
     }
 }
 
