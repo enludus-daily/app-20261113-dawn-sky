@@ -117,13 +117,13 @@ struct AtlasView: View {
                 }
             }
             .environment(model)
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .modifier(JapaneseForScreenshots())
         }
         .sheet(isPresented: $paywall) {
             PaywallView(reason: .rarePage)
                 .environment(model)
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
                 .modifier(JapaneseForScreenshots())
         }
     }
