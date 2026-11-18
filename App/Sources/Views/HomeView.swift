@@ -73,6 +73,8 @@ struct HomeView: View {
                     .font(Typo.display(30, .ultraLight))
                     .kerning(0.3)
                     .foregroundStyle(Tone.ink)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
             }
             Spacer(minLength: 8)
             Button {

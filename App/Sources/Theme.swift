@@ -203,11 +203,17 @@ extension View {
     }
 }
 
-/// 画面の下に固定するボタンの地：空の上に、下へ向かって少し沈む帯（線や白い面で区切らない）
+/// 画面の下に固定するボタンの地：空に溶けるすりガラスの帯（線や白い面で区切らない）。
+/// 上の端はぼかして消し、下で流れてくる中身がボタンの後ろに透けて重ならないようにする
 struct BottomFade: View {
     var body: some View {
-        LinearGradient(colors: [.clear, Color.black.opacity(0.28)], startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea(edges: .bottom)
-            .allowsHitTesting(false)
+        ZStack {
+            Rectangle().fill(.ultraThinMaterial)
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .black, location: 0.35)],
+                                     startPoint: .top, endPoint: .bottom))
+            LinearGradient(colors: [.clear, Color.black.opacity(0.22)], startPoint: .top, endPoint: .bottom)
+        }
+        .ignoresSafeArea(edges: .bottom)
+        .allowsHitTesting(false)
     }
 }
