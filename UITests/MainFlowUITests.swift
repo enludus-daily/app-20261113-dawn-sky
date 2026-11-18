@@ -83,8 +83,10 @@ final class MainFlowUITests: XCTestCase {
         case .tap(let id):
             let element = app.descendants(matching: .any).matching(identifier: id).firstMatch
             XCTAssertTrue(element.waitForExistence(timeout: 10), "\(id) が見つかりません")
-            assertOnScreen(element, in: app, name: id)
-            element.tap()
+            // 画面の中にあることを確かめてから、部品の中心を押す。押せたかは次の操作（次の画面の部品）で確かめる。
+            // 2026-11-18：脈打つ光のアニメーションが続く「空を撮る」ボタンを、isHittable が 3 秒待っても false と返し続けた（あさやけ図鑑）
+            assertOnScreen(element, in: app, name: id, requireHittable: false)
+            element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         case .swipeUp:
             app.windows.firstMatch.swipeUp()
         case .wait(let seconds):
